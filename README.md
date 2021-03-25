@@ -1,142 +1,84 @@
-# Technical HW: Arrays & Maps
-Please complete the following 3 functions. 
-You can test by running the `pytest` or `python3` commands:
+# Technical HW: Implementing ADTs
 
-* To run just the main code for one problem: `python3 frequency.py`
-* To run the tests for one problem: `pytest frequency_test.py`
+In this assignment we are implementing the ADTs we've been studying 
+so far this semester: Linked Lists, Stacks, & Queues. We **will not** be
+using _any_ built-in functions other than `range` or `len` and the `Node`
+class provided.
+
+Please complete implementing all 5 classes (**_Hint:_** we went over
+3 of them in class). The constructors, fields, & method stubs are
+started for you.
+
+You can test the code by running the `pytest` or `python3` commands:
+
+* To run just the main code for one problem: `python3 LinkedList.py`
+* To run the tests for one problem: `pytest LinkedList_test.py`
 * To run all the tests prior to submission: `pytest`
+
+**NOTE: DO NOT run pytest until your main is working**
+-- it may not stop running!
 
 ### Files that should (& shouldn't!) be changed
 
 You **SHOULD** implement your problem solutions in the following files:
-* `frequency.py`
-* `multiply.py`
-* `tic_tac_toe.py`
+* `LinkedList.py`
+* `StackLL.py`
+* `QueueLL.py`
+* `StackArray.py`
+* `QueueArray.py`
 
 You **SHOULD NOT** modify the following files:
-* anything in the `files` folder
-* `frequency_test.py`
-* `multiply_test.py`
-* `tic_tac_toe_test.py`
+* `Node.py`
+* any constructors (i.e., `__init__` functions)
 
-Looking for additional practice problems to prepare for the exam? Checkout:
-* programs in the `practice` folder
+### Professionalism
+In addition to passing the test cases and meeting the specifications / requirements (e.g., only using permitted built-in functions), your code will be assessed in terms of its **_professionalism_**:
+* Following naming convetions: meaningful variable names beginning with a lower case letter, class names beginning with an upper case letter
+* DRYness: avoiding unnecessary steps or copy & pasting code (use loops & functions instead!)
+* Comments: adding comments to explain what lines in longer methods/functions are doing
 
-<!--### General Hints
-* ???-->
+## Problem 1: Linked List
+Given a linked list defined by a `head Node`, please implement the following methods:
+* `add(data)`: inserts a new `Node` with `data` into the front of the list
+* `get_head()`: returns the data in the head node, and `None` otherwise
+* `search(data)`: returns `True` if `data` is in the list, or `False` otherwise
+* `delete(data)`: searches for `data` in the list, removes it if found and returns it, otherwise returns `None` and makes no change to the list
+* `is_empty()`: returns `True` if the list is empty, or `False` otherwise
+* `clear():` makes the list empty
 
-## Problem 1: Word Frequency
+## Problem 2: Stack-LL
+Given a stack defined by a `top Node`, please implement the following methods:
+* `push(data)`: adds a new `Node` with `data` on the top of the stack
+* `peek()`: returns the data on the top of the stack, and `None` otherwise
+* `pop()`: returns the data on the top of the stack, otherwise returns `None` if the stack is empty
+* `is_empty()`: returns `True` if the stack is empty, or `False` otherwise
+* `clear():` makes the stack empty
 
-Implement a function `word_frequencies` that takes
-a string filename as a parameter and returns a
-dictionary mapping each word in the text file
-to the total number of times it occurs. All
-letters should be treated as lower case, and both
-punctuation and numbers should be ignored (best practice is to replace with a space).
-Letters separated by apostrophes should be left together
-(for example, `don't` becomes `dont`).
-Your solution may use string & file functions.
+## Problem 3: Queue-LL
+Given a queue defined by a `front` and `tail Node`, please implement the following methods:
+* `enq(data)`: adds a new `Node` with `data` to the tail of the queue
+* `deq()`: returns the data on the front of the queue and removes it, otherwise returns `None` if the queue is empty
+* `get_front()`: returns the data at the front of the queue, and `None` otherwise
+* `get_tail()`: returns the data at the tail of the queue, and `None` otherwise
+* `is_empty()`: returns `True` if the queue is empty, or `False` otherwise
+* `clear():` makes the queue empty
 
-**Example call**
+## Problem 4: Stack-Array
+Given a stack defined by a `top` index and an `array`, please implement the following methods:
+* `push(data)`: puts `data` on the top of the stack
+* `peek()`: returns the data on the top of the stack, and `None` otherwise
+* `pop()`: returns the data on the top of the stack, otherwise returns `None` if the stack is empty
+* `is_empty()`: returns `True` if the stack is empty, or `False` otherwise
+* `clear():` makes the stack empty
 
-`print_map_by_value(word_frequencies("files/turing.txt"))`
-
-**Outputs**
-```
-    10 the
-     4 code
-     3 of
-     2 turing
-     2 and
-     2 at
-     2 secret
-     2 war
-     2 enigma
-     1 imitation
-     1 game
-     1 based
-     1 on
-     1 real
-     1 life
-     1 story
-     1 legendary
-     1 cryptanalyst
-     1 alan
-     1 film
-     1 portrays
-     1 nail
-     1 biting
-     1 race
-     1 against
-     1 time
-     1 by
-     1 his
-     1 brilliant
-     1 team
-     1 breakers
-     1 britains
-     1 top
-     1 government
-     1 cypher
-     1 school
-     1 bletchley
-     1 park
-     1 during
-     1 darkest
-     1 days
-     1 world
-     1 ii
-     1 true
-     1 was
-     1 man
-     1 who
-     1 cracked
-     1 behind
-     1 every
-     1 is
-     1 an
-     1 unlock
-     1 win
-```
-
-_**Hint**: Looking for how to remove punctuation? 
-See https://www.techiedelight.com/remove-punctuations-string-python/_
-
-## Problem 2: Multiplication Table
-
-Write a function called `multiplication_table` that
-takes a width, height, & scaling factor as parameters
-and returns a two-dimensional array multiplication
-table scaled by the scaling factor.
-You should not be using _any_ functions other than range 
-in implementing your solution.
-
-![multiplication_table(5, 3, 1)](http://emhill.github.io/151/morea/12.arrays//fig1.png)
-![multiplication_table(5, 3, 2)](http://emhill.github.io/151/morea/12.arrays//fig2.png)
-
-
-| **Example calls** | **Returns** |
-| -------------- | --------- |
-| `print_2D(multiplication_table(5, 3, 1))` | `[1, 2, 3, 4, 5]`<br>`[2, 4, 6, 8, 10]`<br>`[3, 6, 9, 12, 15]` |
-| `print_2D(multiplication_table(5, 3, 2))` | `[2, 4, 6, 8, 10]`<br>`[4, 8, 12, 16, 20]`<br>`[6, 12, 18, 24, 30]` |
-
-<!--_**Hint**: use an extra queue to help!_-->
-
-## Problem 3: DID I WIN TIC-TAC-TOE?
-
-Write a function `did_I_win_2D` that takes a string player name
-and a 2-dimensional 3 x 3 array as parameters
-and returns whether the player won the game.
-
-| **Example calls** | **Returns** |
-| -------------- | --------- |
-| `b = [["X", "O", "O"]] * 3`<br>`did_I_win_2D("X", b)` | `True` |
-| `b = [["X", "O", "O"]] * 3`<br>`did_I_win_2D("O", b)` | `True` |
-| `b = [`<br>`['O', 'O', 'X'],`<br>`['O', 'X', 'O'],`<br>`['X', 'O', 'O'] ]`<br>`did_I_win_2D("X", b)` | `True` |
-| `b = [`<br>`['O', 'O', 'X'],`<br>`['O', 'X', 'O'],`<br>`['X', 'O', 'O'] ]`<br>`did_I_win_2D("O", b)` | `False` |
-
-
-_**Hint**: What does a boolean accumulator / aggregator variable look like?_
+## Problem 5: Queue-Array
+Given a queue defined by a `front` and `tail` index and an `array`, please implement the following methods:
+* `enq(data)`: puts `data` on the tail of the queue
+* `deq()`: returns the data on the front of the queue and removes it, otherwise returns `None` if the queue is empty
+* `get_front()`: returns the data at the front of the queue, and `None` otherwise
+* `get_tail()`: returns the data at the tail of the queue, and `None` otherwise
+* `is_empty()`: returns `True` if the queue is empty, or `False` otherwise
+* `clear():` makes the queue empty
 
 ## Getting started
 
