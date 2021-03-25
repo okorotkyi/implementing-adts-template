@@ -85,19 +85,6 @@ def test_add_many_delete_middle():
     assert not ll.search(16)
     assert ll.search(17)
 
-
-def test_add_delete_many():
-    ll = LinkedList()
-    le = []
-    la = []
-    for i in range(20,201,10):
-        ll.add(i)
-        le.append(i)
-    for i in range(20,201,10):
-        la.append(ll.delete(i))
-    assert le == la
-    assert ll.is_empty()
-
 def test_delete_empty():
     ll = LinkedList()
     assert ll.delete(1) is None
@@ -117,3 +104,15 @@ def test_clear_search():
     ll.add(7)
     ll.clear()
     assert not ll.search(7)
+
+def test_add_delete_many():
+    ll = LinkedList()
+    le = []
+    la = []
+    for i in range(20,201,10):
+        ll.add(i)
+        le.append(i)
+    for i in range(20,201,10):
+        la.append(ll.delete(i))
+    assert le == la
+    assert ll.is_empty()

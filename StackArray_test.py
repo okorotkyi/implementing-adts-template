@@ -46,6 +46,16 @@ def test_enq_many_pop():
     s.push(17)
     assert s.pop() == 17
 
+def test_pop_empty():
+    s = StackArray()
+    assert s.pop() is None
+
+def test_clear_empty():
+    s = StackArray()
+    s.push(5)
+    s.clear()
+    assert s.is_empty()
+
 def test_full():
     s = StackArray(5)
     le = []
@@ -56,13 +66,3 @@ def test_full():
     while not s.is_empty():
         la.append(s.pop())
     assert le == la
-
-def test_pop_empty():
-    s = StackArray()
-    assert s.pop() is None
-
-def test_clear_empty():
-    s = StackArray()
-    s.push(5)
-    s.clear()
-    assert s.is_empty()

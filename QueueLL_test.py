@@ -58,17 +58,6 @@ def test_enq_many_deq():
     s.enq(17)
     assert s.deq() == 15
 
-def test_enq_deq_many():
-    s = QueueLL()
-    le = []
-    la = []
-    for i in range(20,201,10):
-        s.enq(i)
-        le.append(i)
-    while not s.is_empty():
-        la.append(s.deq())
-    assert le == la
-
 def test_deq_empty():
     s = QueueLL()
     assert s.deq() is None
@@ -79,3 +68,13 @@ def test_clear_empty():
     s.clear()
     assert s.is_empty()
 
+def test_enq_deq_many():
+    s = QueueLL()
+    le = []
+    la = []
+    for i in range(20,201,10):
+        s.enq(i)
+        le.append(i)
+    while not s.is_empty():
+        la.append(s.deq())
+    assert le == la
