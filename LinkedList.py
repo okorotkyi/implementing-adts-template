@@ -1,9 +1,9 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 1: Linked List
 #
-# NAME:         FIXME
+# NAME:         Oleksandr Korotkyi
 # ASSIGNMENT:   Technical HW: Implementing ADTs
-
+# pytest LinkedList_test.py
 from Node import Node
 
 class LinkedList(object):
@@ -14,20 +14,33 @@ class LinkedList(object):
                 self.add(item)
 
     def get_head(self):
-        # FIXME
-        return
+        return self.head.get_data()
 
     def add(self, data):
-        # FIXME
-        return
+        new_node = Node(data, self.head)
+        self.head = new_node
 
     def search(self, data):
-        # FIXME
-        return
+      node = self.head
+      while node != None:
+        if node.get_data() == data:
+          return True
+        node = node.get_next()
+      return False
 
     def delete(self, data):
-        # FIXME
-        return
+      node = self.head
+      prev = None
+      while node != None:
+        if node.get_data() == data:
+          if prev == None:
+            self.head = node.get_next()
+          else:
+            prev.set_next(node.get_next())
+          return node.get_data()
+        prev = node
+        node = node.get_next()
+      return None
 
     def print(self):
         n = self.head
@@ -37,12 +50,10 @@ class LinkedList(object):
         print("NULL")
 
     def is_empty(self):
-        # FIXME
-        return
+        return self.head == None
 
     def clear(self):
-        # FIXME
-        return
+        self.head = None
 
 def main():
     l = list(range(1, 5))

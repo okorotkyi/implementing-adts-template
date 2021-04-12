@@ -1,8 +1,9 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 3: Queue-LL
 #
-# NAME:         FIXME
+# NAME:         Oleksandr Korotkyi
 # ASSIGNMENT:   Technical HW: Implementing ADTs
+# pytest QueueLL_test.py
 
 from Node import Node
 
@@ -15,20 +16,33 @@ class QueueLL(object):
                 self.enq(item)
 
     def get_front(self):
-        # FIXME
-        return
+      if self.is_empty():
+        return None
+      else:
+        print (self.front.get_data())
+        return self.front.get_data()
 
     def get_tail(self):
-        # FIXME
-        return
+      if self.is_empty():
+        return None
+      else:
+        return self.tail.get_data()
 
     def deq(self):
-        # FIXME
-        return
+        if self.is_empty():
+          return None
+        else:
+          temp = self.front
+          self.front = None
+          return temp.get_data()
 
-    def enq(self, data=None):
-        # FIXME
-        return
+    def enq(self, data):
+        if self.is_empty():
+          self.tail = Node(data)
+          self.front = self.tail
+        else:
+          new_node = Node(data, self.tail)
+          self.tail = new_node
 
     def print(self):
         n = self.front
@@ -38,12 +52,11 @@ class QueueLL(object):
         print("NULL")
 
     def is_empty(self):
-        # FIXME
-        return
+        return self.tail == None
 
     def clear(self):
-        # FIXME
-        return
+        self.tail = None
+
 
 
 def main():

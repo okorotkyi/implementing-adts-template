@@ -1,8 +1,9 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 2: Stack-LL
 #
-# NAME:         FIXME
+# NAME:         Oleksandr Korotkyi
 # ASSIGNMENT:   Technical HW: Implementing ADTs
+#pytest StackLL_test.py
 
 from Node import Node
 
@@ -14,16 +15,22 @@ class StackLL(object):
                 self.add(item)
 
     def peek(self):
-        # FIXME
-        return
+        if self.is_empty():
+          return None
+        else:
+          return self.top.get_data()
 
     def pop(self):
-        # FIXME
-        return
+      if self.is_empty():
+        return None
+      else:
+        top = self.top
+        self.top = self.top.get_next()
+        return top.get_data()
 
     def push(self, data=None):
-        # FIXME
-        return
+        new_node = Node(data, self.top)
+        self.top = new_node
 
     def print(self):
         n = self.top
@@ -33,12 +40,12 @@ class StackLL(object):
         print("NULL")
 
     def is_empty(self):
-        # FIXME
-        return
+        return self.top == None
 
     def clear(self):
-        # FIXME
-        return
+      while not self.is_empty():
+        self.top == None
+        self.top = self.top.get_next()
 
 def main():
     s = StackLL()
